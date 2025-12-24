@@ -1,25 +1,26 @@
-# MenheraOS
+## Apa itu MenheraOS?
 
-Arch-based kawaii OS.
+MenheraOS adalah OS bertemakan kawaii dan anime based, dengan package lengkap untuk memberikan pengalaman terbaik bagi developers.
+Sistem operasi ini berbasis [Arch Linux](https://archlinux.org/) dan memiliki
+[repository pacman tambahan berisi paket-paket kawaii](https://wiki.archlinux.org/title/Unofficial_user_repositories#kawaii).
 
-## What is MenheraOS?
-MenheraOS is the most Kawaii OS. It's based on [Arch Linux](https://archlinux.org/) and has
-[additional pacman repo with kawaii packages](https://wiki.archlinux.org/title/Unofficial_user_repositories#kawaii).
-There are some some packages with useful utilites (e.g. [what-anime-cli](https://github.com/irevenko/what-anime-cli))
-and DE themes.
+Di dalamnya terdapat berbagai paket dengan utilitas yang berguna (contohnya
+[what-anime-cli](https://github.com/irevenko/what-anime-cli)) serta berbagai tema Desktop Environment (DE).
 
-MenheraOS uses [Kawaii Desktop Environment](https://kde.org/) and has kawaii pre-installed color themes,
-wallpapers, SDDM screens and more over.
+MenheraOS menggunakan **Kawaii Desktop Environment**, yaitu [KDE Plasma](https://kde.org/), dan sudah dilengkapi dengan
+tema warna kawaii, wallpaper, layar SDDM, dan berbagai elemen visual lainnya yang terpasang secara default.
 
-Also it has graphical installer based on [Calamares](https://calamares.io/), so installing it will be
-much easier than Arch Linux. Also you can test Menhera OS without installing when booting from USB stick.
+Selain itu, MenheraOS memiliki **installer grafis berbasis** [Calamares](https://calamares.io/), sehingga proses instalasi
+jauh lebih mudah dibandingkan Arch Linux standar. Kamu juga bisa **mencoba MenheraOS tanpa menginstalnya**
+dengan melakukan boot langsung dari USB flash drive.
 
-MenheraOS uses [Zsh](https://www.zsh.org/) as default shell. There is also pre-installed
-[Oh My Zsh](https://ohmyz.sh/) package with
-[kawaii color scheme](https://github.com/LeonidPilyugin/kawaii-oh-my-zsh)
-and git, autocomplete and syntax-highlight plugins.
+MenheraOS menggunakan [Zsh](https://www.zsh.org/) sebagai shell bawaan. Di dalamnya juga sudah terpasang
+[Oh My Zsh](https://ohmyz.sh/) lengkap dengan
+[skema warna kawaii](https://github.com/LeonidPilyugin/kawaii-oh-my-zsh),
+Update Script package dan tools lainnya().
+serta plugin git, autocomplete, dan syntax highlighting.
 
-You can see some some previews below.
+Beberapa tampilan pratinjau dapat kamu lihat di bawah ini.
 
 <img src="doc/preview.png">
 <img src="doc/load.png">
@@ -27,33 +28,19 @@ You can see some some previews below.
 <img src="doc/plymouth.png">
 <img src="doc/grub.png">
 
-## How to install MenheraOS?
-For a start, download the latest MenheraOS ISO from releases. Also you can build it yourself but we don't recommend it because there may be problems between installer and new packages.
-Then, [create a bootable USB stick](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview).
-After that, [boot from USB](https://www.acronis.com/en-us/blog/posts/usb-boot/) and when system load,
-click on "Install" label on desktop and follow instructions.
+---
+
+## Cara Menginstal MenheraOS
+
+Sebagai langkah awal, unduh file ISO MenheraOS terbaru dari halaman **Releases**.
+
+Selanjutnya, [buat USB bootable](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview).
+Setelah itu, [boot komputer dari USB](https://www.acronis.com/en-us/blog/posts/usb-boot/).
+Ketika sistem berhasil dimuat, klik ikon **"Install"** di desktop dan ikuti instruksi instalasi yang tersedia.
 
 > [!WARNING]
-> It is recommended to test installation in virtual machine and backup your system before installing MenheraOS on your computer, because the installation process may be not tested enough.
-> Also try some basic actions like system update and regenerate initramfs image in VM.
-
-## How can I build ISO myself?
-We do not recommend to do it, because usually we cannot update installer package timely, so there will
-be troubles with installation.
-
-But if you want to do that, follow instructions below.
-
-Firstly, install [archiso](https://wiki.archlinux.org/title/Archiso).
-
-Secondly, clone this repo
-```
-$ git clone https://github.com/LeonidPilyugin/menheraOS.git
-```
-
-Finally, run mksio script as root from project root
-```
-$ cd menheraOS
-$ sudo bash mkiso
-```
-
-The `.iso` file will be placed in created "out" directory.
+> Sangat disarankan untuk **menguji instalasi terlebih dahulu di mesin virtual (VMware maupun VirtualBox)** dan **membuat backup sistem**
+> sebelum menginstal MenheraOS di komputer utama, karena proses instalasi mungkin belum sepenuhnya stabil.
+>
+> Selain itu, cobalah beberapa tindakan awal dulu di VM seperti melakukan update sistem dan
+> generate image initramfs.
