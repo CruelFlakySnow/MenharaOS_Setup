@@ -17,10 +17,10 @@ dengan melakukan boot langsung dari USB flash drive.
 MenheraOS menggunakan [Zsh](https://www.zsh.org/) sebagai shell bawaan. Di dalamnya juga sudah terpasang
 [Oh My Zsh](https://ohmyz.sh/) lengkap dengan
 [skema warna kawaii](https://github.com/LeonidPilyugin/kawaii-oh-my-zsh),
-Update Script package dan tools lainnya().
-serta plugin git, autocomplete, dan syntax highlighting.
+Update Script package dan tools lainnya(https://github.com/CruelFlakySnow/MenharaOS_Setup/blob/master/install-dev-tools%20(1).sh).
+Serta plugin git, autocomplete, dan syntax highlighting.
 
-Beberapa tampilan pratinjau dapat kamu lihat di bawah ini.
+Beberapa tampilan pratinjau dapat dilihat di bawah ini.
 
 <img src="doc/preview.png">
 <img src="doc/load.png">
