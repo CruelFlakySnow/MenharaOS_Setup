@@ -1,40 +1,58 @@
-#!/bin/bash
+echo "Memperbarui keyring untuk menghindari isu signature..."
+sudo pacman -S archlinux-keyring --noconfirm
 
-# Script Otomatis Instal Tools Development untuk MenheraOS (Arch-based)
-# Dibuat untuk tugas: Toolchain (GCC, Python, Node.js, Java OpenJDK), IDE (VS Code), Git, Docker
-# Jalankan dengan sudo: curl -sL <github-raw-link> | sudo bash
-# NO ERROR, NO ANOMALY: Update dulu, install non-interactive, handle jika sudah ada.
+echo "Menyinkronkan database paket (tanpa upgrade sistem)..."
+sudo pacman -Sy
 
-set -euo pipefail  # Mode strict: error jika gagal
+# Daftar tools developer + aplikasi umum (hanya dari repo resmi)
+packages=(
+  git                 # Version control
+  code                # Visual Studio Code (open-source edition dari repo resmi)
+  docker              # Containerization
+  docker-compose      # Docker orchestration
+  nodejs              # JavaScript runtime (includes npm)
+  python              # Python interpreter (includes pip)
+  go                  # Go language
+  rust                # Rust language (termasuk cargo via rustup nanti jika perlu)
+  neovim              # Advanced text editor
+  vim                 # Text editor
+  gcc                 # C/C++ compiler
+  make                # Build automation
+  cmake               # Build system generator
+  jdk-openjdk         # Java development kit
+  postgresql          # Database server
+  mariadb             # MySQL-compatible database
+  redis               # In-memory data store
+  nginx               # Web server
+  kubectl             # Kubernetes CLI
+  terraform           # Infrastructure as code
+  firefox             # Web browser
+  vlc                 # Media player
+)
 
-echo "Mulai instalasi tools development..."
+# Fungsi instal paket dengan penanganan error
+install_packages() {
+  for pkg in "${packages[@]}"; do
+    if ! pacman -Qi "$pkg" &> /dev/null; then
+      echo "Menginstal $pkg..."
+      sudo pacman -S --needed --noconfirm "$pkg" || { echo "Error menginstal $pkg"; exit 1; }
+    else
+      echo "$pkg sudah terinstal."
+    fi
+  done
+}
 
-# Step 1: Update sistem (wajib untuk hindari conflict)
-pacman -Syu --noconfirm || { echo "Error update sistem! Cek koneksi/internet."; exit 1; }
+# Instal paket utama
+install_packages
 
-# Step 2: Install Toolchain Pengembangan
-pacman -S --noconfirm --needed gcc python nodejs jdk-openjdk || true
+# Enable service Docker jika terinstal
+if pacman -Qi docker &> /dev/null; then
+  sudo systemctl enable --now docker
+  sudo usermod -aG docker $USER
+  echo "Docker diaktifkan. Logout/login agar perubahan group aktif."
+fi
 
-# Step 3: Install IDE/Editor (VS Code, populer dan terkonfigurasi basic)
-pacman -S --noconfirm --needed code || true  # VS Code OSS dari community repo
+echo "Instalasi selesai tanpa error dan tanpa full system upgrade!"
+echo "Sistem aman untuk reboot. 💜"
 
-# Step 4: Install Git (Version Control, biasanya sudah ada tapi pastikan)
-pacman -S --noconfirm --needed git || true
-
-# Step 5: Install Docker (Containerization Tool)
-pacman -S --noconfirm --needed docker || true
-systemctl enable docker.service || true  # Enable auto-start
-systemctl start docker.service || true   # Start sekarang
-usermod -aG docker $USER || true         # Add current user ke docker group (logout/login ulang untuk efektif)
-
-# Verifikasi instalasi
-echo "Verifikasi instalasi:"
-gcc --version || echo "GCC tidak terdeteksi!"
-python --version || echo "Python tidak terdeteksi!"
-node --version || echo "Node.js tidak terdeteksi!"
-java --version || echo "Java OpenJDK tidak terdeteksi!"
-code --version || echo "VS Code tidak terdeteksi!"
-git --version || echo "Git tidak terdeteksi!"
-docker --version || echo "Docker tidak terdeteksi!"
-
-echo "Instalasi selesai! Logout/login ulang untuk Docker. Jika error, cek log Pacman."
+Apa saja yang aku command di ArchISO ku untuk menambahkan package di atas?
