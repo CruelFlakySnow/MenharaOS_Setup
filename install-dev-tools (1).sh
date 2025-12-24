@@ -54,5 +54,3 @@ fi
 
 echo "Instalasi selesai tanpa error dan tanpa full system upgrade!"
 echo "Sistem aman untuk reboot. 💜"
-
-Apa saja yang aku command di ArchISO ku untuk menambahkan package di atas?
